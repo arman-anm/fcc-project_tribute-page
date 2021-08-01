@@ -1,16 +1,16 @@
 :root {
   font-size: 10px;
   font-family:sans-serif;
-  --font-size: 1.6rem;
+  --font-size: 2.6rem;
   --line-height: 1.5;
   --background-color: white;
-  /* --background-color_odd: bisque; */
-  /* --background-color_even: wheat; */
   --text-color: black;
   --text-color_highlighted: orange;
   --text-color_dimmed: gray;
-  --padding-default: 5vw;
-  --border: calc(var(--font-size) / 8);
+  --padding-default_X: 5vw;
+  --padding-default_Y: 2.5vw;
+  --circle: calc(var(--font-size) / 8);
+  --border-left: calc(var(--font-size) / 10);
   --vertical-line: calc(var(--font-size) / 4);
 }
 /* Box Sizing */
@@ -20,11 +20,9 @@
   box-sizing: border-box;
 }
 
-/* List styles on ul, ol elements with a class attribute */
-ul[class],
-ol[class] {
-  list-style: none;
-  padding: 0;
+/* List style */
+ul, li {
+  list-style: none; /* Remove default bullets */
 }
 
 /* anchor styles */
@@ -67,13 +65,26 @@ body {
 p {
   font-size: var(--font-size);
   font-weight: normal;
-  padding-bottom: 1rem;
+  padding-bottom: var(--font-size);
+}
+
+ p:last-child {
+  padding-bottom: 0;
+    /* to remove padding from all last paragraphs */
 }
 
 h1 {
   font-weight: 700;
   font-size: calc(1.5 * var(--font-size));
     /* ^sets font 150% of the default size  */
+  line-height: 1.15;
+}
+
+h2 {
+  font-size: calc(1.25 * var(--font-size));
+    /* ^sets font 150% of the default size  */
+  font-weight: 600;
+  line-height: 1;
 }
 
 img {
@@ -86,7 +97,7 @@ img {
 .title {
   /* display: none; */
   text-align: center;
-  padding: 1.5rem var(--padding-default);
+  padding: 1.5rem var(--padding-default_X);
   margin: 0;
 }
 
@@ -114,10 +125,25 @@ figcaption {
   display: none;
 }
 
+.container {
+  padding: var(--padding-default_Y) var(--padding-default_X);
+}
+
+.container:nth-last-child(odd) {
+  background-color: wheat;
+}
+
+.container:nth-last-child(even) {
+  background-color: bisque;
+}
+
+.heading {
+  padding-bottom: calc(var(--padding-default_Y) / 2);
+}
+
 .timeline-info {
   position: relative;
     /* ^to make its child position absolute  */
-  background-color:inherit;
 }
 
 /* line */
@@ -131,7 +157,7 @@ figcaption {
   top: 0;
   transform: translateX(-50%);
   /* ^pushes left 50% of X axis results centering through y axis of its position*/
-  left: calc((var(--font-size) * 5));
+  left: calc((var(--font-size) * 4.5));
   /* ^pushes 7*font size from left*/
   background-color: var(--text-color_dimmed);
   z-index: 100;
@@ -140,7 +166,6 @@ figcaption {
 .timeline-item {
   position: relative;
     /* ^to give absolute position to its child  */
-  background-color: wheat;
 }
 
 .timeline-item:nth-child(odd) {
@@ -157,31 +182,62 @@ figcaption {
   position: absolute;
   width: var(--font-size);
   height: var(--font-size);
-  border: var(--border) solid var(--text-color_dimmed);
+  border: var(--circle) solid var(--text-color_dimmed);
   border-radius: 50%;
-  left: calc((var(--font-size) * 5));
-    /* ^same distance as vertical line  */
+  /* left: calc((var(--font-size) * 5)); */
+  left: calc((var(--font-size) * 4.5));
+    /* ^puts at the same distance as vertical line  */
   transform: translateX(-50%);
     /* ^to position center through its y axis  */
   top: calc(var(--font-size) / 3);
     /* ^just a random number found to align with paragraph text */
-  background-color:inherit;
+  background-color:white;
   z-index: 200;
 }
 
 /* date */
 .date {
   position: absolute;
-  max-width: calc(var(--font-size) * 4);
-  right: calc(100% - (var(--font-size) * 4));
+  max-width: calc(var(--font-size) * 3);
+  right: calc(100% - (var(--font-size) * 3));
     /* ^pushes all the way from right then removes its width also it positions itself 6-4=2*font-size left of description   */
   text-align: right;
 }
 
 /* description */
 .description {
-  /* margin-left: calc(var(--font-size) * 6); */
   padding-left: calc(var(--font-size) * 6);
+}
+
+.facts ul {
+  margin: 0;
+  padding: 0;
+  padding-left: calc(var(--padding-default_X) / 2);
+}
+/* left border */
+.facts ul li {
+  position: relative;
+    /* ^to position list marker */
+  border-left: var(--border-left) dotted var(--text-color_dimmed);
+  padding-left: var(--font-size);
+  padding-bottom: var(--font-size);
+}
+
+
+/* list marker */
+.facts ul li::before {
+  content:'';
+  position: absolute;
+  width: calc(var(--font-size) / 2);
+  height: calc(var(--font-size) / 2);
+  border-radius: 50%;
+  background-color: var(--text-color_dimmed);
+  right: 100%;
+    /* ^pushes out of the box */
+  transform: translateX(calc(50% - (var(--border-left) / 2)));
+    /* ^to position center through its y axis, also through the border  */
+  top: calc(var(--font-size) * .6);
+    /* ^just a random number found to align with paragraph text */
 }
 
 
