@@ -5,18 +5,18 @@
 :root {
   font-size: 10px;
   /* font-family: sans-serif; */
-  font-family: 'Caveat', cursive;
-  --font-size: 2rem;
+  font-family: 'Caveat', sans-serif;
+  --font-size: 4rem;
   --line-height: 1.5;
   --background-color: white;
   --text-color: black;
   --text-color_highlighted: orange;
   --text-color_dimmed: gray;
   --padding-default_X: 5vw;
-  --padding-default_Y: 2.5vw;
-  --circle: calc(var(--font-size) / 8);
-  --border-left: calc(var(--font-size) / 10);
-  --vertical-line: calc(var(--font-size) / 4);
+  --circle-size: calc(var(--font-size) * .75);
+  --circle-border: calc(var(--font-size) * .1);
+  --border-left: calc(var(--font-size) * .01);
+  --vertical-line: calc(var(--font-size) * .1);
 }
 
 /* Box Sizing */
@@ -71,13 +71,17 @@ body {
 p {
   font-size: var(--font-size);
   font-weight: normal;
-  padding-bottom: var(--font-size);
 }
 
- p:last-child {
-  padding-bottom: 0;
-    /* to remove padding from all last paragraphs */
+.hero-text p:first-child {
+  margin-top: 0;
 }
+
+.heading {
+  text-decoration: underline;
+  padding: var(--font-size) 0 ;
+}
+
 
 h1 {
   font-weight: bold;
@@ -132,24 +136,21 @@ figcaption {
 }
 
 .container {
-  padding: var(--padding-default_Y) var(--padding-default_X);
+  padding: var(--padding-default_X);
 }
 
-.container:nth-last-child(odd) {
+.container:nth-child(odd) {
   background-color: wheat;
 }
 
-.container:nth-last-child(even) {
+.container:nth-child(even) {
   background-color: bisque;
-}
-
-.heading {
-  padding-bottom: calc(var(--padding-default_Y) / 2);
 }
 
 .timeline-info {
   position: relative;
     /* ^to make its child position absolute  */
+  background-color: inherit;
 }
 
 /* line */
@@ -159,7 +160,8 @@ figcaption {
   width: var(--vertical-line);
   border-radius: var(--font-size);
     /* ^to make the edge round */
-  height: 100%;
+  height: calc(100% - var(--font-size));
+    /* ^to remove the extra height from bottom */
   top: 0;
   transform: translateX(-50%);
   /* ^pushes left 50% of X axis results centering through y axis of its position*/
@@ -172,32 +174,45 @@ figcaption {
 .timeline-item {
   position: relative;
     /* ^to give absolute position to its child  */
-}
-
-.timeline-item:nth-child(odd) {
-  background-color: var(--background-color_odd);
-}
-
-.timeline-item:nth-child(even) {
-  background-color: var(--background-color_even);
+  background-color: inherit;
+  padding-bottom: var(--font-size);
 }
 
 /* circle */
 .timeline-item::before {
   content:'';
   position: absolute;
-  width: var(--font-size);
-  height: var(--font-size);
-  border: var(--circle) solid var(--text-color_dimmed);
+  width: var(--circle-size);
+  height: var(--circle-size);
+  border: var(--circle-border) solid var(--text-color_dimmed);
   border-radius: 50%;
   /* left: calc((var(--font-size) * 5)); */
   left: calc((var(--font-size) * 4.5));
     /* ^puts at the same distance as vertical line  */
   transform: translateX(-50%);
     /* ^to position center through its y axis  */
-  top: calc(var(--font-size) / 3);
+  top: calc(var(--font-size) * .45);
     /* ^just a random number found to align with paragraph text */
-  background-color:white;
+  background-color: inherit;
+  z-index: 300;
+}
+
+/* pointer */
+.timeline-item::after {
+  content:'';
+  position: absolute;
+  display: none;
+  width: calc(var(--circle-size) * 1.5);
+  width: calc(var(--circle-size) * 2.5);
+  height: calc(var(--vertical-line) * 1);
+  border-radius: 50%;
+  left: calc(var(--font-size) * 4.5);
+    /* ^puts at the same distance as vertical line & circle */
+  transform: translateX(-50%) translateY(50%);
+  /* ^to position center through its Y & X axis  */
+  top: calc(var(--font-size) * .7);
+    /* ^just a random number found to align with paragraph text */
+  background-color: var(--text-color_dimmed);
   z-index: 200;
 }
 
@@ -213,6 +228,7 @@ figcaption {
 /* description */
 .description {
   padding-left: calc(var(--font-size) * 6);
+    /* ^pushed it right to make space for date, circle & vertical line  */
 }
 
 .facts ul {
@@ -229,6 +245,10 @@ figcaption {
   padding-bottom: var(--font-size);
 }
 
+.facts ul li:last-child {
+  padding-bottom: 0;
+}
+
 
 /* list marker */
 .facts ul li::before {
@@ -242,17 +262,14 @@ figcaption {
     /* ^pushes out of the box */
   transform: translateX(calc(50% - (var(--border-left) / 2)));
     /* ^to position center through its y axis, also through the border  */
-  top: calc(var(--font-size) * .6);
+  top: calc(var(--font-size) * .5);
     /* ^just a random number found to align with paragraph text */
 }
 
 footer {
-  padding: var(--padding-default_Y) var(--padding-default_X);
+  padding: var(--padding-default_X);
+  text-align: center;
 }
-
-
-
-
 
 
 
