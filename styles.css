@@ -165,7 +165,8 @@ figcaption {
   top: 0;
   transform: translateX(-50%);
   /* ^pushes left 50% of X axis results centering through y axis of its position*/
-  left: calc((var(--font-size) * 4.5));
+  /* left: calc((var(--font-size) * 4.5)); */
+  left: calc((var(--font-size) * 1));
   /* ^pushes 7*font size from left*/
   background-color: var(--text-color_dimmed);
   z-index: 100;
@@ -187,12 +188,13 @@ figcaption {
   height: var(--circle-size);
   border: var(--circle-border) solid var(--text-color_dimmed);
   border-radius: 50%;
-  /* left: calc((var(--font-size) * 5)); */
-  left: calc((var(--font-size) * 4.5));
+  /* left: calc((var(--font-size) * 4.5)); */
+  left: calc((var(--font-size) * 1));
     /* ^puts at the same distance as vertical line  */
   transform: translateX(-50%);
     /* ^to position center through its y axis  */
-  top: calc(var(--font-size) * .45);
+  /* top: calc(var(--font-size) * .45); */
+  top: calc(var(--font-size) * .35);
     /* ^just a random number found to align with paragraph text */
   background-color: inherit;
   z-index: 300;
@@ -200,18 +202,19 @@ figcaption {
 
 /* pointer */
 .timeline-item::after {
+  display: none;
   content:'';
   position: absolute;
-  display: none;
-  width: calc(var(--circle-size) * 1.5);
   width: calc(var(--circle-size) * 2.5);
   height: calc(var(--vertical-line) * 1);
   border-radius: 50%;
-  left: calc(var(--font-size) * 4.5);
+  /* left: calc(var(--font-size) * 4.5); */
+  left: calc(var(--font-size) * 1);
     /* ^puts at the same distance as vertical line & circle */
   transform: translateX(-50%) translateY(50%);
   /* ^to position center through its Y & X axis  */
-  top: calc(var(--font-size) * .7);
+  /* top: calc(var(--font-size) * .7); */
+  top: calc(var(--font-size) * .6);
     /* ^just a random number found to align with paragraph text */
   background-color: var(--text-color_dimmed);
   z-index: 200;
@@ -219,16 +222,20 @@ figcaption {
 
 /* date */
 .date {
-  position: absolute;
-  max-width: calc(var(--font-size) * 3);
-  right: calc(100% - (var(--font-size) * 3));
+  /* position: absolute; */
+  /* max-width: calc(var(--font-size) * 3); */
+  /* right: calc(100% - (var(--font-size) * 3)); */
     /* ^pushes all the way from right then removes its width also it positions itself 6-4=2*font-size left of description   */
-  text-align: right;
+  /* text-align: right; */
+  /* font-weight: 600; */
+  color:var(--text-color_dimmed);
+  /* text-decoration: underline; */
 }
 
 /* description */
 .description {
-  padding-left: calc(var(--font-size) * 6);
+  /* padding-left: calc(var(--font-size) * 6); */
+  padding-left: calc(var(--font-size) * 2);
     /* ^pushed it right to make space for date, circle & vertical line  */
 }
 
