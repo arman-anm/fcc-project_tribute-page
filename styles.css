@@ -160,7 +160,8 @@ figcaption {
   width: var(--vertical-line);
   border-radius: var(--font-size);
     /* ^to make the edge round */
-  height: calc(100% - var(--font-size));
+  /* height: calc(100% - var(--font-size)); */
+  height: calc(100% - (var(--font-size) * .5));
     /* ^to remove the extra height from bottom */
   top: 0;
   transform: translateX(-50%);
