@@ -192,7 +192,7 @@ figcaption {
     /* ^puts at the same distance as vertical line  */
   transform: translateX(-50%);
     /* ^to position center through its y axis  */
-  top: calc(var(--font-size) * .45);
+  top: calc(var(--font-size) * .35);
     /* ^just a random number found to align with paragraph text */
   background-color: inherit;
   z-index: 300;
@@ -200,9 +200,9 @@ figcaption {
 
 /* pointer */
 .timeline-item::after {
+  display: none;
   content:'';
   position: absolute;
-  display: none;
   width: calc(var(--circle-size) * 1.5);
   width: calc(var(--circle-size) * 2.5);
   height: calc(var(--vertical-line) * 1);
