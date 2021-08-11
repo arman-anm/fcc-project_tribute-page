@@ -4,13 +4,10 @@
 /* Root */
 :root {
   font-size: 10px;
-  /* font-family: sans-serif; */
   font-family: 'Caveat', sans-serif;
   --font-size: 2.4rem;
   --line-height: 1.35;
-  /* --background-color: #a4c0b0; */
   --background-color: #ecf0da;
-  /* --background-color: #f0ebda; */
   --text-color: #44486C;
   --text-color_highlighted:  #285083;
   --text-color_dimmed:#adc0c8;
@@ -30,7 +27,7 @@
 
 /* List style */
 ul, li {
-  list-style: none; /* Remove default bullets */
+  list-style: none; /* Removed default bullets */
 }
 
 /* anchor styles */
@@ -81,7 +78,6 @@ body {
   font-size: var(--font-size);
   line-height: var(--line-height);
   background-color: var(--background-color);
-  /* background-image: url(https://i.ibb.co/zs8mXbP/Group-2-5-1-1.png); */
   background-repeat: repeat;
 }
 
@@ -120,7 +116,6 @@ img {
 }
 
 .title {
-  /* display: none; */
   text-align: center;
   padding: 1.5rem var(--padding-default_X);
   margin: 0;
@@ -144,7 +139,9 @@ img {
   margin: 0 auto;
   width: 100%;
   max-width: 600px;
+  /* border-radius: 50%; */
 }
+
 
 figcaption {
   display: none;
@@ -172,7 +169,6 @@ figcaption {
   width: var(--vertical-line);
   border-radius: var(--font-size);
     /* ^to make the edge round */
-  /* height: calc(100% - var(--font-size)); */
   height: calc(100% - (var(--font-size) * .5));
     /* ^to remove the extra height from bottom */
   top: 0;
@@ -200,7 +196,6 @@ figcaption {
   height: var(--circle-size);
   border: var(--circle-border) solid var(--text-color_dimmed);
   border-radius: 50%;
-  /* left: calc((var(--font-size) * 5)); */
   left: calc((var(--font-size) * 4.5));
     /* ^puts at the same distance as vertical line  */
   transform: translateX(-50%);
@@ -291,7 +286,6 @@ footer {
   color: var(--text-color_highlighted);
   font-weight: bold;
   text-align: center;
-  /* margin-left: 5px; */
   border-radius: 5px;
   background: inherit;
   padding-left: 10px;
@@ -307,7 +301,6 @@ footer {
 }
 
 /* Media Queries */
-/* Mobile Medium */
 @media (min-width:375px) {
   :root {
     --font-size: 2.6rem
